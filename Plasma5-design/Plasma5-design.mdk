@@ -1,0 +1,34 @@
+Title         : Plasma5 设计
+Author        : 罗刚
+Logo          : False
+
+[TITLE]
+
+# 目标
+整体目标是在视觉和操作上完全模仿Plasma 5，除了大面积的动画不支持外其它的功能应该基本一致。
+
+* 实现一套类似于qml的布局方案
+* 实现Plasma 5 Breeze主题的控件集
+* 实现完整的桌面环境
+
+# 布局
+目前flexbox使用起来相对于qml的layout来说要繁琐很多，实现同样的布局需要做更多的工作，在不同的组件里一遍一遍的重新写也非常麻烦。因此决定模仿qml的布局实现一套react的布局方案。方案暂名react-qml-layout，普通的布局统一用react-qml-layout完成，复杂的布局再考虑用flexbox。
+
+react-qml-layout需要实现以下的特性:
+
+* anchor（anchor: parent.center等）
+* parent and id reference
+* width, height, margin
+* width等属性的值用于计算比例，并不是真实宽度绝对值
+
+# 控件集
+观察Plasma 5自带的应用，制作最常用的控件的React版本。所有控件都应遵循一些原则：
+
+* 空间应该尽可能占据父组件（layout组件）的全部面积（全高全宽）
+
+# 桌面环境
+需要至少实现以下元素：
+
+* 任务栏
+* widget系统
+* 多桌面
