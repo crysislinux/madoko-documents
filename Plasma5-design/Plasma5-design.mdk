@@ -1,3 +1,5 @@
+Package: [UTF8]ctex
+
 Title         : Plasma5 设计
 Author        : 罗刚
 Logo          : False
@@ -20,6 +22,15 @@ react-qml-layout需要实现以下的特性:
 * parent and id reference
 * width, height, margin
 * width等属性的值用于计算比例，并不是真实宽度绝对值
+
+## layout reference
+这点很重要，在做计算（尺寸）的时候需要引用其它的layout。
+
+规则：
+
+* component scope, component render方法内部的layout之间可以相互引用，对其它component里的layout无法引用
+* 同一个component scope内的引用id要保证唯一
+* parent不受component scope限制
 
 # 控件集
 观察Plasma 5自带的应用，制作最常用的控件的React版本。所有控件都应遵循一些原则：
